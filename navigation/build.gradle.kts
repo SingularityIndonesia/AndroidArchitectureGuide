@@ -24,6 +24,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.2"
+    }
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs = freeCompilerArgs.plus("-Xcontext-receivers")
@@ -32,4 +38,5 @@ android {
 
 dependencies {
     api(project(":lib:core-common"))
+    api(project(mapOf("path" to ":feature:dashboard-domain")))
 }

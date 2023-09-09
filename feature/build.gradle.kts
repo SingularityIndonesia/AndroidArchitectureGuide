@@ -19,7 +19,7 @@ subprojects {
                 ?: error("Project '$name' is not an Android module")
 
             androidLibrary.apply {
-                compileSdk = 33
+                compileSdk = 34
 
                 defaultConfig {
                     minSdk = 24
@@ -45,6 +45,9 @@ subprojects {
                 compileOptions {
                     sourceCompatibility = JavaVersion.VERSION_1_8
                     targetCompatibility = JavaVersion.VERSION_1_8
+                }
+                buildFeatures {
+                    compose = true
                 }
 
                 // this is not working yet
