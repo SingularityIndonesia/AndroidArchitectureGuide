@@ -2,6 +2,7 @@ package com.singularity_indonesia.singularityarchitectureguideline
 
 import androidx.multidex.MultiDexApplication
 import com.singularity_code.codebase.util.Singularity
+import com.singularity_indonesia.account_ui.AccountUIModule
 import com.singularity_indonesia.dashboard_ui.DashboardUIModule
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
@@ -14,12 +15,13 @@ import org.koin.core.module.Module
  */
 data class Modules(
     val list: List<Module> = listOf(
+        AccountUIModule,
         DashboardUIModule
     )
 )
 
 class MainApplication(
-    private val modules: Modules
+    private val modules: Modules = Modules()
 ) : MultiDexApplication() {
 
     override fun onCreate() {

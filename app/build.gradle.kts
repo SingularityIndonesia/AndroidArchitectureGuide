@@ -53,4 +53,5 @@ dependencies {
     api(project(":lib:core-common"))
     implementation(project(mapOf("path" to ":navigation")))
     implementation(project(mapOf("path" to ":feature:dashboard-ui")))
+    implementation(project(mapOf("path" to ":feature:account-ui")))
 }

@@ -8,6 +8,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.singularity_code.codebase.pattern.Register
+import com.singularity_indonesia.account_domain.payload.LoginScreenPayload
+import com.singularity_indonesia.account_domain.screen.LoginDestination
+import com.singularity_indonesia.account_domain.screen.LoginScreen
 import com.singularity_indonesia.core.core_common.navigation.Back
 import com.singularity_indonesia.core.core_common.navigation.Destination
 import com.singularity_indonesia.core.core_common.navigation.Navigation
@@ -28,6 +31,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 sealed interface MainNavigationEvent : NavigationEvent {
     object Idle : MainNavigationEvent
+
+    data class GoToLogin(
+        val pld: LoginScreenPayload? = null
+    ) : MainNavigationEvent
+
     data class GoToDashboard(
         val pld: DashboardScreenPayload? = null
     ) : MainNavigationEvent
@@ -51,6 +59,15 @@ class MainNavigation(
                 .automate {
                     event.data.collect { event ->
                         when (event) {
+
+                            is MainNavigationEvent.GoToLogin -> {
+                                emit(
+                                    LoginDestination(
+                                        payload = event.pld
+                                    )
+                                )
+                            }
+
                             is MainNavigationEvent.GoToDashboard -> {
                                 emit(
                                     DashboardDestination(
@@ -86,8 +103,12 @@ class MainNavigation(
 
         NavHost(
             navController = navController,
-            startDestination = DashboardScreen.ROUTE
+            startDestination = LoginScreen.ROUTE
         ) {
+            composable(LoginScreen.ROUTE) {
+                val payload = destination?.payload as? LoginScreenPayload
+                screens.loginScreen.value.invoke(payload)
+            }
             composable(DashboardScreen.ROUTE) {
                 val payload = destination?.payload as? DashboardScreenPayload
                 screens.dashboardScreen.value.invoke(payload)

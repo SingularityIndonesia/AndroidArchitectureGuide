@@ -39,4 +39,5 @@ android {
 dependencies {
     api(project(":lib:core-common"))
     api(project(mapOf("path" to ":feature:dashboard-domain")))
+    implementation(project(mapOf("path" to ":feature:account-domain")))
 }
