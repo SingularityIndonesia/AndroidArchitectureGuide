@@ -1,4 +1,4 @@
-package com.singularity_indonesia.singularityarchitectureguideline.ui.theme
+package com.singularity_indonesia.core.core_ui.theme
 
 import android.app.Activity
 import android.os.Build
