@@ -15,6 +15,11 @@ interface Destination<P : Payload> {
     val payload: P?
 }
 
+data class Back(
+    override val route: String = "BACK",
+    override val payload: Payload? = null
+) : Destination<Payload>
+
 interface NavigationEvent
 
 interface Navigation<E : NavigationEvent> {
