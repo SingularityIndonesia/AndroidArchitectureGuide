@@ -10,11 +10,17 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.singularity_code.codebase.pattern.Payload
+import com.singularity_code.codebase.pattern.Register
 import com.singularity_indonesia.core.core_common.navigation.Destination
 import com.singularity_indonesia.core.core_common.navigation.Navigation
+import com.singularity_indonesia.core.core_common.navigation.NavigationEvent
+import com.singularity_indonesia.core.core_common.util.automate
+import com.singularity_indonesia.core.core_common.util.createRegister
 import com.singularity_indonesia.dashboard_domain.payload.DashboardScreenPayload
+import com.singularity_indonesia.dashboard_domain.screen.DashboardDestination
 import com.singularity_indonesia.dashboard_domain.screen.DashboardScreen
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -32,21 +38,51 @@ data class Screens(
     )
 )
 
+sealed interface MainNavigationEvent : NavigationEvent {
+    object Idle : MainNavigationEvent
+    data class GoToDashboard(
+        val pld: DashboardScreenPayload? = null
+    ) : MainNavigationEvent
+
+    object GoBack : MainNavigationEvent
+}
+
 class MainNavigation(
     private val uiScope: CoroutineScope
-) : Navigation {
+) : Navigation<MainNavigationEvent> {
 
     private lateinit var navController: NavHostController
-    private val destination = MutableStateFlow<Destination<*>?>(null)
 
-    override fun <D : Destination<P>, P : Payload> navigate(
-        destination: D,
-        clearBackStack: Boolean
-    ) {
-        if (clearBackStack) {
-            uiScope.launch {
-                clearBackStack()
-            }
+    override val event: Register<MainNavigationEvent> by lazy {
+        with(uiScope) {
+            createRegister(MainNavigationEvent.Idle)
+        }
+    }
+
+    private val destination by lazy {
+        with(uiScope) {
+            MutableStateFlow<Destination<*>?>(null)
+                .automate {
+                    event.data.collect { event ->
+                        when (event) {
+                            is MainNavigationEvent.GoToDashboard -> {
+                                emit(
+                                    DashboardDestination(
+                                        payload = event.pld
+                                    )
+                                )
+                            }
+
+                            is MainNavigationEvent.GoBack -> {
+                                navController.popBackStack()
+                            }
+
+                            else -> {
+                                // do nothing
+                            }
+                        }
+                    }
+                }
         }
     }
 
@@ -55,10 +91,6 @@ class MainNavigation(
         currentBackStack.forEach {
             navController.clearBackStack(it.id)
         }
-    }
-
-    override fun goBack(): Boolean {
-        TODO("Not yet implemented")
     }
 
     @Composable
