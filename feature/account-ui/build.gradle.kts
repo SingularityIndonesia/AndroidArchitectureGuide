@@ -15,4 +15,5 @@ android {
 dependencies {
     api(project(":lib:core-common"))
     api(project(":lib:core-ui"))
+    implementation(project(mapOf("path" to ":feature:account-domain")))
 }

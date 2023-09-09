@@ -1,5 +1,6 @@
 package com.singularity_indonesia.singularityarchitectureguideline
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.singularity_indonesia.core.core_common.util.preparePluto
 import com.singularity_indonesia.dashboard_ui.DashboardUIModule
 import com.singularity_indonesia.navigation.MainNavigation
 import com.singularity_indonesia.singularityarchitectureguideline.ui.theme.SingularityArchitectureGuidelineTheme
@@ -22,24 +24,12 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.core.module.Module
 
-data class Modules(
-    val list: List<Module> = listOf(
-        DashboardUIModule
-    )
-)
-
-class MainActivity(
-    private val modules: Modules = Modules()
-) : ComponentActivity() {
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(
         savedInstanceState: Bundle?
     ) {
         super.onCreate(savedInstanceState)
-
-        startKoin {
-            modules(modules.list)
-        }
 
         setContent {
             SingularityArchitectureGuidelineTheme {
@@ -52,29 +42,8 @@ class MainActivity(
                 }
             }
         }
-        preparePluto()
-    }
-
-    private fun preparePluto() {
-        if (!Settings.canDrawOverlays(this) && BuildConfig.DEBUG) {
-            val intent = Intent(
-                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                Uri.parse("package:$packageName")
-            )
-
-            startActivityForResult(intent, 0)
-
-            Toast.makeText(
-                this,
-                "Berikan izin pada aplikasi untuk display overlay.",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        stopKoin()
+        if (BuildConfig.DEBUG)
+            preparePluto()
     }
 }
 
