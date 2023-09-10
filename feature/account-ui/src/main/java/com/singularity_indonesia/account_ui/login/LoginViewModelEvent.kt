@@ -1,4 +1,4 @@
-package com.singularity_indonesia.account_ui.login.viewmodel
+package com.singularity_indonesia.account_ui.login
 
 import com.singularity_indonesia.account_domain.model.Email
 import com.singularity_indonesia.account_domain.model.Password

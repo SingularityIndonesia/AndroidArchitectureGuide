@@ -1,4 +1,4 @@
-package com.singularity_indonesia.account_ui.login.viewmodel
+package com.singularity_indonesia.account_ui.login
 
 import androidx.lifecycle.ViewModel
 import com.singularity_code.codebase.util.flow.automate
@@ -13,8 +13,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import org.koin.java.KoinJavaComponent
-import org.koin.java.KoinJavaComponent.inject
 
 /**
  * Created by: stefanus

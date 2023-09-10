@@ -1,7 +1,7 @@
 package com.singularity_indonesia.account_ui
 
 import com.singularity_indonesia.account_ui.login.LoginScreenImpl
-import com.singularity_indonesia.account_ui.login.viewmodel.LoginViewModel
+import com.singularity_indonesia.account_ui.login.LoginViewModel
 import com.singularity_indonesia.navigation_domain.screen.LoginScreen
 import org.koin.dsl.bind
 import org.koin.dsl.module
