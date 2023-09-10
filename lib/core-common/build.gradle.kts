@@ -111,5 +111,5 @@ dependencies {
     api("net.zetetic:android-database-sqlcipher:4.5.3")
 
     // FUNC IT
-    api("com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230826-03")
+    api("com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230910")
 }
