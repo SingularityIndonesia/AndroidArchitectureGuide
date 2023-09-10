@@ -7,10 +7,12 @@ import com.singularity_code.codebase.util.flow.provider
 import com.singularity_code.codebase.util.flow.register
 import com.singularity_indonesia.account_domain.payload.LoginPLD
 import com.singularity_indonesia.account_domain.repo.AuthRepository
+import com.singularity_indonesia.core_common.type.ButtonState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -23,7 +25,6 @@ import org.koin.dsl.module
 class LoginViewModel(
     private val authRepository: AuthRepository
 ) : ViewModel() {
-
     companion object {
         val MOD = module {
             /** declare modules here **/
@@ -35,9 +36,9 @@ class LoginViewModel(
         }
     }
 
-    private val event by register<LoginViewModelEvent>(Idle)
+    val event by register<LoginViewModelEvent>(Idle)
 
-    private val loginProvider by lazy {
+    val loginProvider by lazy {
         val provider by provider(operator = authRepository::login)
 
         provider.automate {
@@ -82,4 +83,15 @@ class LoginViewModel(
 
         sb.toString()
     }.flowOn(Dispatchers.IO)
+
+    val buttonState = loginProvider.loading.map {
+        when {
+            it -> ButtonState.Loading
+            else -> ButtonState.Normal
+        }
+    }.flowOn(Dispatchers.IO)
+
+    val buttonClickable = loginProvider.loading.map {
+        !it
+    }
 }

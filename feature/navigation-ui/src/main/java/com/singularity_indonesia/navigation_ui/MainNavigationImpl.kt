@@ -12,6 +12,7 @@ import com.singularity_code.codebase.pattern.Register
 import com.singularity_indonesia.core_common.pattern.Back
 import com.singularity_indonesia.core_common.pattern.Destination
 import com.singularity_indonesia.core_common.util.automate
+import com.singularity_indonesia.core_common.util.compose.clearBackStack
 import com.singularity_indonesia.core_common.util.createRegister
 import com.singularity_indonesia.navigation_domain.MainNavigation
 import com.singularity_indonesia.navigation_domain.MainNavigationEvent
@@ -23,6 +24,7 @@ import com.singularity_indonesia.navigation_domain.screen.LoginDestination
 import com.singularity_indonesia.navigation_domain.screen.LoginScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.runBlocking
 import org.koin.java.KoinJavaComponent
 
 /**
@@ -59,7 +61,9 @@ data class MainNavigationImpl(
                             is MainNavigationEvent.GoToLogin -> {
                                 emit(
                                     LoginDestination(
-                                        payload = null
+                                        payload = LoginScreenPayload(
+                                            mainNavigation = this@MainNavigationImpl
+                                        )
                                     )
                                 )
                             }
@@ -67,7 +71,9 @@ data class MainNavigationImpl(
                             is MainNavigationEvent.GoToDashboard -> {
                                 emit(
                                     DashboardDestination(
-                                        payload = null
+                                        payload = DashboardScreenPayload(
+                                            mainNavigation = this@MainNavigationImpl
+                                        )
                                     )
                                 )
                             }
@@ -90,9 +96,6 @@ data class MainNavigationImpl(
         val navController = rememberNavController()
         val screens = remember { Screens() }
         val destination = destination.collectAsState().value
-        val viewModelStoreOwner = checkNotNull(LocalViewModelStoreOwner.current) {
-            "No ViewModelStoreOwner was provided via LocalViewModelStoreOwner"
-        }
 
         LaunchedEffect(destination) {
             destination?.let {
@@ -109,19 +112,14 @@ data class MainNavigationImpl(
         ) {
             composable(LoginScreen.ROUTE) {
                 val payload = (destination?.payload as? LoginScreenPayload)
-                    ?: LoginScreenPayload(
-                        mainNavigation = this@MainNavigationImpl
-                    )
+                    ?: LoginScreenPayload(mainNavigation = this@MainNavigationImpl)
                 screens.loginScreen.value(
                     payload
                 )
             }
             composable(DashboardScreen.ROUTE) {
                 // clear event
-                val payload = (destination?.payload as? DashboardScreenPayload)
-                    ?: DashboardScreenPayload(
-                        mainNavigation = this@MainNavigationImpl
-                    )
+                val payload = destination?.payload as? DashboardScreenPayload
                 screens.dashboardScreen.value(
                     payload
                 )
