@@ -1,6 +1,7 @@
 package com.singularity_indonesia.account_ui
 
 import com.singularity_indonesia.account_ui.login.LoginScreenImpl
+import com.singularity_indonesia.account_ui.login.viewmodel.LoginViewModel
 import com.singularity_indonesia.navigation_domain.screen.LoginScreen
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -11,8 +12,11 @@ import org.koin.dsl.module
  * Design by: stefanus.ayudha@gmail.com
  */
 
-val AccountUIModule = module {
-    factory {
-        LoginScreenImpl
-    } bind LoginScreen::class
-}
+val AccountUIModule = arrayOf(
+    module {
+        factory {
+            LoginScreenImpl
+        } bind LoginScreen::class
+    },
+    LoginViewModel.MOD
+)

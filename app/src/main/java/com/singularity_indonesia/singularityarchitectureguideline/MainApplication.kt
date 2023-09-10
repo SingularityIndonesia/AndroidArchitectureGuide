@@ -2,6 +2,7 @@ package com.singularity_indonesia.singularityarchitectureguideline
 
 import androidx.multidex.MultiDexApplication
 import com.singularity_code.codebase.util.Singularity
+import com.singularity_indonesia.account_data.AccountDataModule
 import com.singularity_indonesia.account_ui.AccountUIModule
 import com.singularity_indonesia.dashboard_ui.DashboardUIModule
 import com.singularity_indonesia.navigation_ui.NavigationModule
@@ -16,9 +17,10 @@ import org.koin.core.module.Module
  */
 data class Modules(
     val list: List<Module> = listOf(
-        NavigationModule,
-        AccountUIModule,
-        DashboardUIModule
+        *NavigationModule,
+        *AccountDataModule,
+        *AccountUIModule,
+        *DashboardUIModule
     )
 )
 

@@ -9,8 +9,10 @@ import org.koin.dsl.module
  * 10/09/23 11.47
  * Design by: stefanus.ayudha@gmail.com
  */
-val NavigationModule = module {
-    factory {
-        MainNavigationImpl(it.get())
-    } bind MainNavigation::class
-}
+val NavigationModule = arrayOf(
+    module {
+        factory {
+            MainNavigationImpl(it.get())
+        } bind MainNavigation::class
+    }
+)

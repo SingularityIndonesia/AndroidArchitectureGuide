@@ -30,6 +30,8 @@ dependencies {
 
     // KOIN
     api("io.insert-koin:koin-android:3.1.5")
+    api("io.insert-koin:koin-compose:1.0.4")
+    api ("io.insert-koin:koin-androidx-compose:3.4.6")
 
     // MULTIDEX
     api("androidx.multidex:multidex:2.0.1")

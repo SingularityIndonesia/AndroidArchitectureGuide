@@ -55,4 +55,5 @@ dependencies {
     api(project(mapOf("path" to ":feature:dashboard-ui")))
     api(project(mapOf("path" to ":feature:account-ui")))
     implementation(project(mapOf("path" to ":feature:navigation-ui")))
+    implementation(project(mapOf("path" to ":feature:account-data")))
 }

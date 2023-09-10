@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.singularity_indonesia.navigation_domain.MainNavigationEvent
@@ -17,7 +18,7 @@ import com.singularity_indonesia.navigation_domain.screen.DashboardScreen
  * Design by: stefanus.ayudha@gmail.com
  */
 
-val DashboardScreenImpl = DashboardScreen { pld ->
+val DashboardScreenImpl = DashboardScreen @Composable { pld ->
     Surface {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(

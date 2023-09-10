@@ -11,8 +11,10 @@ import org.koin.dsl.module
  * Design by: stefanus.ayudha@gmail.com
  */
 
-val DashboardUIModule = module {
-    factory {
-        DashboardScreenImpl
-    } bind DashboardScreen::class
-}
+val DashboardUIModule = arrayOf(
+    module {
+        factory {
+            DashboardScreenImpl
+        } bind DashboardScreen::class
+    }
+)

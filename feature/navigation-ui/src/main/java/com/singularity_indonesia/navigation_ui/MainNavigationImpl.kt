@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
+import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -23,6 +24,8 @@ import com.singularity_indonesia.navigation_domain.screen.LoginScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import org.koin.dsl.bind
+import org.koin.dsl.module
 import org.koin.java.KoinJavaComponent
 
 /**
@@ -90,6 +93,9 @@ data class MainNavigationImpl(
         val navController = rememberNavController()
         val screens = remember { Screens() }
         val destination = destination.collectAsState().value
+        val viewModelStoreOwner = checkNotNull(LocalViewModelStoreOwner.current) {
+            "No ViewModelStoreOwner was provided via LocalViewModelStoreOwner"
+        }
 
         LaunchedEffect(destination) {
             destination?.let {
@@ -107,7 +113,8 @@ data class MainNavigationImpl(
             composable(LoginScreen.ROUTE) {
                 val payload = (destination?.payload as? LoginScreenPayload)
                     ?: LoginScreenPayload(
-                        mainNavigation = this@MainNavigationImpl
+                        mainNavigation = this@MainNavigationImpl,
+                        viewModelStoreOwner = viewModelStoreOwner
                     )
                 screens.loginScreen.value(
                     payload
