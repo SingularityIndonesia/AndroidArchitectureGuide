@@ -6,6 +6,7 @@ import com.singularity_indonesia.account_domain.model.Token
 import com.singularity_indonesia.account_domain.model.TokenExpiredDate
 import com.singularity_indonesia.account_domain.model.UserCredential
 import kotlinx.coroutines.delay
+import org.koin.dsl.bind
 import org.koin.dsl.module
 import java.lang.System.currentTimeMillis
 
@@ -40,7 +41,7 @@ interface AuthWebApi {
                     }
 
                 }
-            }
+            } bind AuthWebApi::class
         }
     }
 

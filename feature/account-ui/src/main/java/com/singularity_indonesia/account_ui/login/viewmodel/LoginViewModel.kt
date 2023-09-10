@@ -7,13 +7,14 @@ import com.singularity_code.codebase.util.flow.provider
 import com.singularity_code.codebase.util.flow.register
 import com.singularity_indonesia.account_domain.payload.LoginPLD
 import com.singularity_indonesia.account_domain.repo.AuthRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import org.koin.java.KoinJavaComponent
+import org.koin.java.KoinJavaComponent.inject
 
 /**
  * Created by: stefanus
@@ -22,7 +23,6 @@ import org.koin.dsl.module
  */
 
 class LoginViewModel(
-    private val ioScope: CoroutineScope,
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
@@ -31,8 +31,7 @@ class LoginViewModel(
             /** declare modules here **/
             viewModel {
                 LoginViewModel(
-                    ioScope = it.get(),
-                    authRepository = get()
+                    get()
                 )
             }
         }
