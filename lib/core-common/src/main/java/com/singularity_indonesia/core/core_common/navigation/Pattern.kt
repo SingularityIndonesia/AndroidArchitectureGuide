@@ -15,6 +15,11 @@ interface Destination<P : Payload> {
     val payload: P?
 }
 
+fun interface Screen<P : Payload> {
+    @Composable
+    operator fun invoke(pld: P?)
+}
+
 data class Back(
     override val route: String = "BACK",
     override val payload: Payload? = null

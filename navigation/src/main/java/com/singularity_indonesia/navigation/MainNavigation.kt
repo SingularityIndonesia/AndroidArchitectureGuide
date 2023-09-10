@@ -107,11 +107,11 @@ class MainNavigation(
         ) {
             composable(LoginScreen.ROUTE) {
                 val payload = destination?.payload as? LoginScreenPayload
-                screens.loginScreen.value.invoke(payload)
+                screens.loginScreen.value(payload)
             }
             composable(DashboardScreen.ROUTE) {
                 val payload = destination?.payload as? DashboardScreenPayload
-                screens.dashboardScreen.value.invoke(payload)
+                screens.dashboardScreen.value(payload)
             }
         }
     }
