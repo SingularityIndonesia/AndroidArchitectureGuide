@@ -1,4 +1,4 @@
-package com.singularity_indonesia.core.core_common.navigation
+package com.singularity_indonesia.core_common.pattern
 
 import androidx.compose.runtime.Composable
 import com.singularity_code.codebase.pattern.Payload
@@ -6,10 +6,9 @@ import com.singularity_code.codebase.pattern.Register
 
 /**
  * Created by: stefanus
- * 09/09/23 20.52
+ * 10/09/23 13.12
  * Design by: stefanus.ayudha@gmail.com
  */
-
 interface Destination<P : Payload> {
     val route: String
     val payload: P?

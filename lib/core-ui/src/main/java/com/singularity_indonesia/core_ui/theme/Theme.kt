@@ -1,4 +1,4 @@
-package com.singularity_indonesia.core.core_ui.theme
+package com.singularity_indonesia.core_ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -15,6 +15,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+/**
+ * Created by: stefanus
+ * 10/09/23 13.44
+ * Design by: stefanus.ayudha@gmail.com
+ */
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,

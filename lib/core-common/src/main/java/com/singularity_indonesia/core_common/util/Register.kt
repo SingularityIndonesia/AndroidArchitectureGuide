@@ -1,4 +1,4 @@
-package com.singularity_indonesia.core.core_common.util
+package com.singularity_indonesia.core_common.util
 
 import com.singularity_code.codebase.pattern.Register
 import kotlinx.coroutines.CoroutineScope

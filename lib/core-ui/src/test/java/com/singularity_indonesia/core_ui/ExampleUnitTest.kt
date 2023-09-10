@@ -1,4 +1,4 @@
-package com.singularity_indonesia.core.core_network
+package com.singularity_indonesia.core_ui
 
 import org.junit.Test
 

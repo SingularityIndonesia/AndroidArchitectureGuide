@@ -1,4 +1,4 @@
-package com.singularity_indonesia.core.core_common.util.compose
+package com.singularity_indonesia.core_common.util.compose
 
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.flow.first

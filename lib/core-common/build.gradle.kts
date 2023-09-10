@@ -1,5 +1,5 @@
 android {
-    namespace = "com.singularity_indonesia.core.core_common"
+    namespace = "com.singularity_indonesia.core_common"
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs = freeCompilerArgs.plus("-Xcontext-receivers")

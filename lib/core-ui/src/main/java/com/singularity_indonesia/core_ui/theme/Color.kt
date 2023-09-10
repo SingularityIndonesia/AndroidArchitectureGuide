@@ -1,6 +1,12 @@
-package com.singularity_indonesia.core.core_ui.theme
+package com.singularity_indonesia.core_ui.theme
 
 import androidx.compose.ui.graphics.Color
+
+/**
+ * Created by: stefanus
+ * 10/09/23 13.43
+ * Design by: stefanus.ayudha@gmail.com
+ */
 
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)

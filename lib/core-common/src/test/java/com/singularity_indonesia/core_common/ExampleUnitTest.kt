@@ -1,4 +1,4 @@
-package com.singularity_indonesia.core.core_ui
+package com.singularity_indonesia.core_common
 
 import org.junit.Test
 

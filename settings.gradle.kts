@@ -1,7 +1,5 @@
 import java.net.URI
 
-include(":feature:navigation-ui")
-
 
 pluginManagement {
     repositories {
@@ -22,11 +20,12 @@ dependencyResolutionManagement {
 rootProject.name = "Singularity Architecture Guideline"
 include(":app")
 include(":lib")
-include(":lib:core-common")
-include(":lib:core-network")
 include(":lib:core-ui")
+include(":lib:core-network")
+include(":lib:core-common")
 include(":feature")
 include(":feature:navigation-domain")
+include(":feature:navigation-ui")
 include(":feature:dashboard-domain")
 include(":feature:dashboard-data")
 include(":feature:dashboard-ui")
