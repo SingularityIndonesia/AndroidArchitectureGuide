@@ -2,6 +2,8 @@ package com.singularity_indonesia.dashboard_domain.payload
 
 import com.singularity_code.codebase.pattern.Payload
 import com.singularity_code.codebase.util.serialization.NOTHING
+import com.singularity_indonesia.core.core_common.navigation.Navigation
+import com.singularity_indonesia.core.core_common.navigation.NavigationEvent
 
 /**
  * Created by: stefanus
@@ -9,5 +11,5 @@ import com.singularity_code.codebase.util.serialization.NOTHING
  * Design by: stefanus.ayudha@gmail.com
  */
 data class DashboardScreenPayload(
-    val nothing: NOTHING = NOTHING
+    val nothing: NOTHING = NOTHING,
 ) : Payload

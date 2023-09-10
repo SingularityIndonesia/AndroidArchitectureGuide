@@ -1,5 +1,5 @@
 android {
-    namespace = "com.singularity_indonesia.account_ui"
+    namespace = "com.singularity_indonesia.navigation_ui"
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs = freeCompilerArgs.plus("-Xcontext-receivers")
@@ -15,6 +15,7 @@ android {
 dependencies {
     api(project(":lib:core-common"))
     api(project(":lib:core-ui"))
-    api(project(mapOf("path" to ":feature:account-domain")))
-    api(project(mapOf("path" to ":feature:navigation-domain")))
+    implementation(project(mapOf("path" to ":feature:navigation-domain")))
+    implementation(project(mapOf("path" to ":feature:account-domain")))
+    implementation(project(mapOf("path" to ":feature:dashboard-domain")))
 }

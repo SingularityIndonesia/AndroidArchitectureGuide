@@ -51,7 +51,8 @@ android {
 
 dependencies {
     api(project(":lib:core-common"))
-    implementation(project(mapOf("path" to ":navigation")))
-    implementation(project(mapOf("path" to ":feature:dashboard-ui")))
-    implementation(project(mapOf("path" to ":feature:account-ui")))
+    api(project(mapOf("path" to ":feature:navigation-domain")))
+    api(project(mapOf("path" to ":feature:dashboard-ui")))
+    api(project(mapOf("path" to ":feature:account-ui")))
+    implementation(project(mapOf("path" to ":feature:navigation-ui")))
 }

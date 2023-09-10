@@ -1,4 +1,4 @@
-package com.singularity_indonesia.navigation
+package com.singularity_indonesia.navigation_ui
 
 import org.junit.Test
 

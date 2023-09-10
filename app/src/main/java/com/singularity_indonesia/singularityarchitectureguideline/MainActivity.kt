@@ -6,14 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.singularity_indonesia.core.core_common.util.preparePluto
-import com.singularity_indonesia.navigation.MainNavigation
 import com.singularity_indonesia.core.core_ui.theme.SingularityArchitectureGuidelineTheme
+import com.singularity_indonesia.navigation_domain.MainNavigation
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class MainActivity : ComponentActivity() {
 
@@ -25,11 +26,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             SingularityArchitectureGuidelineTheme {
                 // A surface container using the 'background' color from the theme
+                val uiScope = rememberCoroutineScope()
+                val mainNavigation: MainNavigation = remember{ get { parametersOf(uiScope) } }
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainNavigation(rememberCoroutineScope()).Content()
+                    mainNavigation.Content()
                 }
             }
         }

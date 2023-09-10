@@ -1,4 +1,4 @@
-package com.singularity_indonesia.navigation
+package com.singularity_indonesia.navigation_ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -13,39 +13,34 @@ import com.singularity_indonesia.account_domain.screen.LoginDestination
 import com.singularity_indonesia.account_domain.screen.LoginScreen
 import com.singularity_indonesia.core.core_common.navigation.Back
 import com.singularity_indonesia.core.core_common.navigation.Destination
-import com.singularity_indonesia.core.core_common.navigation.Navigation
-import com.singularity_indonesia.core.core_common.navigation.NavigationEvent
 import com.singularity_indonesia.core.core_common.util.automate
 import com.singularity_indonesia.core.core_common.util.createRegister
 import com.singularity_indonesia.dashboard_domain.payload.DashboardScreenPayload
 import com.singularity_indonesia.dashboard_domain.screen.DashboardDestination
 import com.singularity_indonesia.dashboard_domain.screen.DashboardScreen
+import com.singularity_indonesia.navigation_domain.MainNavigation
+import com.singularity_indonesia.navigation_domain.MainNavigationEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
+import org.koin.java.KoinJavaComponent
 
 /**
  * Created by: stefanus
- * 09/09/23 20.35
+ * 10/09/23 11.44
  * Design by: stefanus.ayudha@gmail.com
  */
+data class Screens(
+    val loginScreen: Lazy<LoginScreen> = KoinJavaComponent.inject(
+        clazz = LoginScreen::class.java
+    ),
+    val dashboardScreen: Lazy<DashboardScreen> = KoinJavaComponent.inject(
+        clazz = DashboardScreen::class.java
+    )
+)
 
-sealed interface MainNavigationEvent : NavigationEvent {
-    object Idle : MainNavigationEvent
-
-    data class GoToLogin(
-        val pld: LoginScreenPayload? = null
-    ) : MainNavigationEvent
-
-    data class GoToDashboard(
-        val pld: DashboardScreenPayload? = null
-    ) : MainNavigationEvent
-
-    object GoBack : MainNavigationEvent
-}
-
-class MainNavigation(
+data class MainNavigationImpl(
     private val uiScope: CoroutineScope
-) : Navigation<MainNavigationEvent> {
+) : MainNavigation {
 
     override val event: Register<MainNavigationEvent> by lazy {
         with(uiScope) {
@@ -63,7 +58,7 @@ class MainNavigation(
                             is MainNavigationEvent.GoToLogin -> {
                                 emit(
                                     LoginDestination(
-                                        payload = event.pld
+                                        payload = null
                                     )
                                 )
                             }
@@ -71,7 +66,7 @@ class MainNavigation(
                             is MainNavigationEvent.GoToDashboard -> {
                                 emit(
                                     DashboardDestination(
-                                        payload = event.pld
+                                        payload = null
                                     )
                                 )
                             }
@@ -107,11 +102,15 @@ class MainNavigation(
         ) {
             composable(LoginScreen.ROUTE) {
                 val payload = destination?.payload as? LoginScreenPayload
-                screens.loginScreen.value(payload)
+                screens.loginScreen.value(
+                    payload
+                )
             }
             composable(DashboardScreen.ROUTE) {
                 val payload = destination?.payload as? DashboardScreenPayload
-                screens.dashboardScreen.value(payload)
+                screens.dashboardScreen.value(
+                    payload
+                )
             }
         }
     }
