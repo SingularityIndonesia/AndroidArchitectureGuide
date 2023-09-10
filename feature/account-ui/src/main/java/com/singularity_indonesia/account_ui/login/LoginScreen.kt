@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,27 +21,29 @@ import com.singularity_indonesia.navigation_domain.screen.LoginScreen
  */
 
 val LoginScreenImpl = LoginScreen { pld ->
-    Column(Modifier.padding(16.dp)) {
-        Text(
-            text = "Login Screen",
-            style = MaterialTheme.typography.titleLarge
-        )
-        Text(
-            text = "Payload:",
-            style = MaterialTheme.typography.titleMedium
-        )
-        Text("$pld")
-        Spacer(Modifier.weight(1f))
-        Button(
-            modifier = Modifier
-                .align(Alignment.End),
-            onClick = {
-                pld?.mainNavigation?.event?.set(
-                    MainNavigationEvent.GoToDashboard
-                )
+    Surface {
+        Column(Modifier.padding(16.dp)) {
+            Text(
+                text = "Login Screen",
+                style = MaterialTheme.typography.titleLarge
+            )
+            Text(
+                text = "Payload:",
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text("$pld")
+            Spacer(Modifier.weight(1f))
+            Button(
+                modifier = Modifier
+                    .align(Alignment.End),
+                onClick = {
+                    pld?.mainNavigation?.event?.set(
+                        MainNavigationEvent.GoToDashboard
+                    )
+                }
+            ) {
+                Text("To Dashboard")
             }
-        ) {
-            Text("To Dashboard")
         }
     }
 }
