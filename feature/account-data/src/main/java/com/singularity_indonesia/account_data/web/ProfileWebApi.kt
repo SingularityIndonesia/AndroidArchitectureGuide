@@ -1,6 +1,5 @@
 package com.singularity_indonesia.account_data.web
 
-import com.singularity_indonesia.account_domain.model.BearerToken
 import com.singularity_indonesia.account_domain.model.UserCredential
 
 /**

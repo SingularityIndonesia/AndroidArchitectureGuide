@@ -1,7 +1,6 @@
 package com.singularity_indonesia.account_data.repo
 
 import com.singularity_indonesia.account_data.web.AuthWebApi
-import com.singularity_indonesia.account_data.web.ProfileWebApi
 import com.singularity_indonesia.account_domain.model.UserCredential
 import com.singularity_indonesia.account_domain.payload.LoginPLD
 import com.singularity_indonesia.account_domain.repo.AuthRepository

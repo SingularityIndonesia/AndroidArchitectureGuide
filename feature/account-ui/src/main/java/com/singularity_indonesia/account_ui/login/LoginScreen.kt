@@ -22,7 +22,7 @@ import org.koin.androidx.compose.koinViewModel
  */
 
 val LoginScreenImpl = LoginScreen @Composable { pld ->
-     val vm = koinViewModel<LoginViewModel>()
+    val vm = koinViewModel<LoginViewModel>()
 
     Surface {
         Column(Modifier.padding(16.dp)) {
