@@ -22,6 +22,7 @@ import com.singularity_indonesia.navigation_domain.screen.LoginDestination
 import com.singularity_indonesia.navigation_domain.screen.LoginScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent
 
 /**
@@ -92,7 +93,10 @@ data class MainNavigationImpl(
 
         LaunchedEffect(destination) {
             destination?.let {
-                navController.navigate(it.route)
+                if (it is Back)
+                    navController.popBackStack()
+                else
+                    navController.navigate(it.route)
             }
         }
 
@@ -101,13 +105,20 @@ data class MainNavigationImpl(
             startDestination = LoginScreen.ROUTE
         ) {
             composable(LoginScreen.ROUTE) {
-                val payload = destination?.payload as? LoginScreenPayload
+                val payload = (destination?.payload as? LoginScreenPayload)
+                    ?: LoginScreenPayload(
+                        mainNavigation = this@MainNavigationImpl
+                    )
                 screens.loginScreen.value(
                     payload
                 )
             }
             composable(DashboardScreen.ROUTE) {
-                val payload = destination?.payload as? DashboardScreenPayload
+                // clear event
+                val payload = (destination?.payload as? DashboardScreenPayload)
+                    ?: DashboardScreenPayload(
+                        mainNavigation = this@MainNavigationImpl
+                    )
                 screens.dashboardScreen.value(
                     payload
                 )
