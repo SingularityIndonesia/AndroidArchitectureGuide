@@ -14,6 +14,5 @@ import com.singularity_indonesia.navigation_domain.MainNavigation
 
 data class LoginScreenPayload(
     val nothing: NOTHING = NOTHING,
-    val mainNavigation: MainNavigation,
-    val viewModelStoreOwner: ViewModelStoreOwner
+    val mainNavigation: MainNavigation
 ) : Payload

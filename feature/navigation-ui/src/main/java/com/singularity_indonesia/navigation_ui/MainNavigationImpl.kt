@@ -110,8 +110,7 @@ data class MainNavigationImpl(
             composable(LoginScreen.ROUTE) {
                 val payload = (destination?.payload as? LoginScreenPayload)
                     ?: LoginScreenPayload(
-                        mainNavigation = this@MainNavigationImpl,
-                        viewModelStoreOwner = viewModelStoreOwner
+                        mainNavigation = this@MainNavigationImpl
                     )
                 screens.loginScreen.value(
                     payload
