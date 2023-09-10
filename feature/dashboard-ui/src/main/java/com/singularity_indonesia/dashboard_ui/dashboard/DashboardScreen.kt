@@ -1,7 +1,7 @@
 package com.singularity_indonesia.dashboard_ui.dashboard
 
 import androidx.compose.material3.Text
-import com.singularity_indonesia.dashboard_domain.screen.DashboardScreen
+import com.singularity_indonesia.navigation_domain.screen.DashboardScreen
 
 /**
  * Created by: stefanus

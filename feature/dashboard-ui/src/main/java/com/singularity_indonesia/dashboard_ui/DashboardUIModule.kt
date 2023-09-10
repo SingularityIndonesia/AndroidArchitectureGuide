@@ -1,7 +1,7 @@
 package com.singularity_indonesia.dashboard_ui
 
-import com.singularity_indonesia.dashboard_domain.screen.DashboardScreen
 import com.singularity_indonesia.dashboard_ui.dashboard.DashboardScreenImpl
+import com.singularity_indonesia.navigation_domain.screen.DashboardScreen
 import org.koin.dsl.bind
 import org.koin.dsl.module
 

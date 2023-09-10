@@ -1,13 +1,15 @@
-package com.singularity_indonesia.dashboard_domain.screen
+package com.singularity_indonesia.navigation_domain.screen
 
 import androidx.compose.runtime.Composable
+import com.singularity_code.codebase.pattern.Payload
+import com.singularity_code.codebase.util.serialization.NOTHING
 import com.singularity_indonesia.core.core_common.navigation.Destination
 import com.singularity_indonesia.core.core_common.navigation.Screen
-import com.singularity_indonesia.dashboard_domain.payload.DashboardScreenPayload
+import com.singularity_indonesia.navigation_domain.payload.DashboardScreenPayload
 
 /**
  * Created by: stefanus
- * 09/09/23 20.51
+ * 10/09/23 13.00
  * Design by: stefanus.ayudha@gmail.com
  */
 
