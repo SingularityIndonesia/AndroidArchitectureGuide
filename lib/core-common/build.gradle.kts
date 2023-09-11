@@ -7,6 +7,17 @@ android {
 }
 
 dependencies {
+
+    // SINGULARITY CODEBASE
+    // see: https://github.com/SingularityIndonesia/AndroidCodebase
+    releaseApi("com.github.SingularityIndonesia:AndroidCodebase:2.0.0-alpha1-20230908")
+    debugApi("com.github.SingularityIndonesia:AndroidCodebase:2.0.0-alpha1-20230908-debug")
+
+    // FUNC IT
+    // Collections of utils to support your functional programming kotlin.
+    // see: https://github.com/SingularityIndonesia/Func-It
+    api("com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230910")
+
     testApi("junit:junit:4.13.2")
     androidTestApi("androidx.test.ext:junit:1.1.5")
     androidTestApi("androidx.test.espresso:espresso-core:3.5.1")
@@ -20,10 +31,6 @@ dependencies {
     api("androidx.core:core-ktx:1.12.0")
     api("androidx.appcompat:appcompat:1.6.1")
     api("com.google.android.material:material:1.9.0")
-
-    // CODEBASE
-    releaseApi("com.github.SingularityIndonesia:AndroidCodebase:2.0.0-alpha1-20230908")
-    debugApi("com.github.SingularityIndonesia:AndroidCodebase:2.0.0-alpha1-20230908-debug")
 
     // NAVIGATION
     api("androidx.navigation:navigation-compose:2.7.2")
@@ -109,7 +116,4 @@ dependencies {
 
     // SQL Cipher
     api("net.zetetic:android-database-sqlcipher:4.5.3")
-
-    // FUNC IT
-    api("com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230910")
 }
