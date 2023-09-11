@@ -10,8 +10,8 @@ dependencies {
 
     // SINGULARITY CODEBASE
     // see: https://github.com/SingularityIndonesia/AndroidCodebase
-    releaseApi("com.github.SingularityIndonesia:AndroidCodebase:2.0.0-alpha1-20230908")
-    debugApi("com.github.SingularityIndonesia:AndroidCodebase:2.0.0-alpha1-20230908-debug")
+    releaseApi("com.github.SingularityIndonesia:AndroidCodebase:2.0.0-alpha1-20230911")
+    debugApi("com.github.SingularityIndonesia:AndroidCodebase:2.0.0-alpha1-20230911-debug")
 
     // FUNC IT
     // Collections of utils to support your functional programming kotlin.

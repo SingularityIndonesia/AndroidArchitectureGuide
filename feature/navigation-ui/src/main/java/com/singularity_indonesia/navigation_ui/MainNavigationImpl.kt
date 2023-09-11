@@ -9,11 +9,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.singularity_code.codebase.pattern.Register
+import com.singularity_code.codebase.util.flow.automate
+import com.singularity_code.codebase.util.flow.createRegister
 import com.singularity_indonesia.core_common.pattern.Back
 import com.singularity_indonesia.core_common.pattern.Destination
-import com.singularity_indonesia.core_common.util.automate
-import com.singularity_indonesia.core_common.util.compose.clearBackStack
-import com.singularity_indonesia.core_common.util.createRegister
 import com.singularity_indonesia.navigation_domain.MainNavigation
 import com.singularity_indonesia.navigation_domain.MainNavigationEvent
 import com.singularity_indonesia.navigation_domain.payload.DashboardScreenPayload

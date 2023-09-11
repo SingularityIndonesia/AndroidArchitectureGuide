@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import com.singularity_indonesia.core_common.util.preparePluto
+import com.singularity_code.codebase.util.debug.pluto.preparePluto
 import com.singularity_indonesia.core_ui.theme.SingularityArchitectureGuidelineTheme
 import com.singularity_indonesia.navigation_domain.MainNavigation
 import org.koin.android.ext.android.get
