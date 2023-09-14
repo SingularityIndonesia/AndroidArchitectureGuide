@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import arrow.core.None
 import com.singularity_indonesia.account_domain.model.Email
 import com.singularity_indonesia.account_domain.model.Password
-import com.singularity_indonesia.core_common.type.ButtonState
+import com.singularity_indonesia.common.type.ButtonState
 import com.singularity_indonesia.navigation_domain.MainNavigationEvent
 import com.singularity_indonesia.navigation_domain.screen.LoginScreen
 import kotlinx.coroutines.flow.map

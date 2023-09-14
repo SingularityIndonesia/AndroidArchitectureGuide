@@ -1,7 +1,7 @@
 package com.singularity_indonesia.navigation_domain
 
 import androidx.compose.runtime.Composable
-import com.singularity_indonesia.core_common.pattern.Navigation
+import com.singularity_indonesia.common.pattern.Navigation
 
 /**
  * Created by: stefanus

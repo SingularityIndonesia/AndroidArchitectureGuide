@@ -1,8 +1,8 @@
 package com.singularity_indonesia.navigation_domain.screen
 
 import androidx.compose.runtime.Composable
-import com.singularity_indonesia.core_common.pattern.Destination
-import com.singularity_indonesia.core_common.pattern.Screen
+import com.singularity_indonesia.common.pattern.Destination
+import com.singularity_indonesia.common.pattern.Screen
 import com.singularity_indonesia.navigation_domain.payload.LoginScreenPayload
 
 /**

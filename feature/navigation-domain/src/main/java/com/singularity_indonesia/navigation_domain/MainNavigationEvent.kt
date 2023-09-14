@@ -1,6 +1,6 @@
 package com.singularity_indonesia.navigation_domain
 
-import com.singularity_indonesia.core_common.pattern.NavigationEvent
+import com.singularity_indonesia.common.pattern.NavigationEvent
 
 /**
  * Created by: stefanus

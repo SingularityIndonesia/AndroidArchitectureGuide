@@ -4,15 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
-import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.singularity_code.codebase.pattern.Register
 import com.singularity_code.codebase.util.flow.automate
 import com.singularity_code.codebase.util.flow.createRegister
-import com.singularity_indonesia.core_common.pattern.Back
-import com.singularity_indonesia.core_common.pattern.Destination
+import com.singularity_indonesia.common.pattern.Back
+import com.singularity_indonesia.common.pattern.Destination
 import com.singularity_indonesia.navigation_domain.MainNavigation
 import com.singularity_indonesia.navigation_domain.MainNavigationEvent
 import com.singularity_indonesia.navigation_domain.payload.DashboardScreenPayload
@@ -23,7 +22,6 @@ import com.singularity_indonesia.navigation_domain.screen.LoginDestination
 import com.singularity_indonesia.navigation_domain.screen.LoginScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.runBlocking
 import org.koin.java.KoinJavaComponent
 
 /**
