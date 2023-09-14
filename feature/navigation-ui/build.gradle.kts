@@ -22,8 +22,8 @@ dependencies {
     debugApi("androidx.compose.ui:ui-tooling")
     debugApi("androidx.compose.ui:ui-test-manifest")
 
-    api(project(":lib:core-common"))
-    api(project(":lib:core-ui"))
+    api(project(":lib:common"))
+    api(project(":lib:ui"))
     implementation(project(mapOf("path" to ":feature:navigation-domain")))
     implementation(project(mapOf("path" to ":feature:account-domain")))
     implementation(project(mapOf("path" to ":feature:dashboard-domain")))

@@ -22,7 +22,7 @@ dependencies {
     debugApi("androidx.compose.ui:ui-tooling")
     debugApi("androidx.compose.ui:ui-test-manifest")
 
-    api(project(":lib:core-common"))
-    api(project(":lib:core-network"))
+    api(project(":lib:common"))
+    api(project(":lib:network"))
     implementation(project(mapOf("path" to ":feature:account-domain")))
 }
